@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body{
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>#1. Leap year or not</h2>
+    <label>Enter the year: <input type="number" id="txtb" /></label>
+    <button onclick="isleap()">check</button>
+    <div id="leap"></div>
+    <h2>#2. Check sundays on january 1st</h2>
+    <div id="sunday"></div><br>
+    <button onclick="findsun()">Check</button>
+    <h2>#3. parity checker from 1-15</h2>
+    <div id="par"></div>
+    <br>
+    <button onclick="parity()">check parity</button>
+    <h2>#4. palindrome or not</h2>
+    <label>Enter the text: <input type="text" id="txt" /></label>
+    <button onclick="isPalindrome()">Check</button>
+    <div id="pl"></div>
+
+    <script>
+      function isleap() {
+        let num = Number(document.getElementById("txtb").value);
+        if (num % 100 == 0) {
+          if (num % 400 == 0) {
+            document.getElementById("leap").innerHTML = "It's a leap year";
+          } else {
+            document.getElementById("leap").innerHTML = "It's Not a leap year";
+          }
+        } else {
+          if (num % 4 == 0) {
+            document.getElementById("leap").innerHTML = "It's a leap year";
+          } else {
+            document.getElementById("leap").innerHTML = "It's Not a leap year";
+          }
+        }
+      }
+      function findsun() {
+        let val = document.getElementById("sunday");
+        val.innerHTML = "";
+        for (let year = 2014; year <= 2050; year++) {
+          const date = new Date(year, 0, 1);
+          if (date.getDay() === 0) {
+            val.innerHTML += year + " " + "-January 1st is a sunday<br>";
+          }
+        }
+      }
+      function parity() {
+        const val = document.getElementById("par");
+        val.innerHTML = "";
+        for (let i = 0; i <= 15; i++) {
+          if (i % 2 == 0) {
+            val.innerHTML += i + " " + "is even<br>";
+          } else {
+            val.innerHTML += i + " " + "is odd<br>";
+          }
+        }
+      }
+      function isPalindrome() {
+        let pal = document.getElementById("txt").value;
+        let temp = "";
+        for (i = pal.length - 1; i >= 0; i--) {
+          temp += pal[i];
+        }
+        if (temp === pal) {
+          document.getElementById("pl").innerHTML = "It's Palindrome";
+        } else {
+          document.getElementById("pl").innerHTML = "It's Not Palindrome";
+        }
+      }
+    </script>
+  </body>
+</html>
